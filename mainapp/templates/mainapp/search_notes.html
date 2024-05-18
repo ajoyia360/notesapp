@@ -1,0 +1,26 @@
+{% extends 'mainapp/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="mt-5">Search Notes</h1>
+        <form class="mt-4 mb-4" method="get" action="{% url 'search_notes' %}">
+            <div class="input-group">
+                <input type="text" class="form-control" name="query" placeholder="Search by title" value="{{ query }}">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+        <hr>
+        {% if notes %}
+            <h2>Search Results</h2>
+            <ul class="list-group">
+                {% for note in notes %}
+                    <li class="list-group-item"><a href="{% url 'detail_note' note.id %}">{{ note.title }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No notes found.</p>
+        {% endif %}
+    </div>
+{% endblock %}

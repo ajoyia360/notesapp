@@ -1,0 +1,31 @@
+{% extends 'mainapp/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Edit Note</div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="title">Title:</label>
+                            <input type="text" class="form-control" id="title" name="title" value="{{ note.title }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Content:</label>
+                            <textarea class="form-control" id="content" name="content" rows="4" required>{{ note.content }}</textarea>
+                        </div>
+                        {% if note.screen_shoot.url %}
+                            <img src="{{ note.screen_shoot.url }}" class="img-fluid" alt="Screenshot">
+                        {% endif %}
+                        <button style="margin-top: 5px" type="submit" class="btn btn-primary">Save Changes</button>
+                        <a href="{% url 'read_notes' %}" style="margin-top: 5px" type="submit" class="btn btn-primary">go back</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
