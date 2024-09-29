@@ -1,14 +1,10 @@
-{% extends 'mainapp/create_notes.html' %}
-{% block content %}
-{% if messages %}
-  {% for message in messages %}
-    <div class="alert alert-primary" role="alert">
-      {{ message }}
-    </div>
-  {% endfor %}
-{% endif %}
-<div class="container mt-5 ">
-  <div class="card notes-container mb-4"> <!-- Added mb-4 class for bottom margin -->
+{% extends 'mainapp/create_notes.html' %} {% block content %} {% if messages %}
+{% for message in messages %}
+<div class="alert alert-primary" role="alert">{{ message }}</div>
+{% endfor %} {% endif %}
+<div class="container mt-5 border-5 border-success">
+  <div class="card notes-container mb-4">
+    <!-- Added mb-4 class for bottom margin -->
     <div class="card-body">
       <div class="row">
         {% for note in notes %}
@@ -18,11 +14,27 @@
               <h2 class="card-title">{{ note.title }}</h2>
               <p class="card-text">{{ note.content }}</p>
               {% if note.screen_shoot %}
-              <img src="{{ note.screen_shoot.url }}" class="card-img-top" alt="Screenshot">
+              <img
+                src="{{ note.screen_shoot.url }}"
+                class="card-img-top border rounded shadow"
+                alt="Screenshot"
+              />
               {% endif %}
-              <a href="{% url 'detail_note' note.id %}" class="btn btn-primary btn-sm">Details</a>
-              <a href="{% url 'delete_note' note.id %}" class="btn btn-danger btn-sm">Delete</a>
-              <a href="{% url 'edit_note' note.id %}" class="btn btn-secondary btn-sm">Edit</a>
+              <a
+                href="{% url 'detail_note' note.id %}"
+                class="btn btn-primary btn-sm mt-2 rounded-pill"
+                >Details</a
+              >
+              <a
+                href="{% url 'delete_note' note.id %}"
+                class="btn btn-danger btn-sm mt-2 rounded-pill"
+                >Delete</a
+              >
+              <a
+                href="{% url 'edit_note' note.id %}"
+                class="btn btn-secondary btn-sm mt-2 rounded-pill"
+                >Edit</a
+              >
             </div>
           </div>
         </div>

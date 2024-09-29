@@ -1,34 +1,69 @@
-{% extends 'mainapp/base.html' %}
+{% extends 'mainapp/base.html' %} {% block content %}
+<style>
+  .form-control {
+    transition: border-color 0.3s, border-width 0.3s; /* Smooth transition */
+  }
 
-{% block content %}
-    <div class="form-errors">
-        {% if form.errors %}
-            <ul>
-                {% for field, errors in form.errors.items %}
-                    {% for error in errors %}
-                        <li>{{ field }}: {{ error }}</li>
-                    {% endfor %}
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
+  .form-control:hover {
+    border-color: #007bff; /* Change this to your desired hover color */
+    border-width: 2px; /* Increase border width on hover */
+  }
+</style>
 
-    <div class="note-form">
-        <form method="post" enctype='multipart/form-data' class="form">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="id_title">Title</label>
-                {{ form.title }}
-            </div>
-            <div class="form-group">
-                <label for="id_content">Content</label>
-                {{ form.content }}
-            </div>
-            <div class="form-group">
-                <label for="id_screen_shoot">Screenshot</label>
-                {{ form.screen_shoot }}
-            </div>
-            <button type="submit" class="btn btn-primary">Embed Note</button>
-        </form>
-    </div>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Create a Note</h2>
+
+  <div class="form-errors">
+    {% if form.errors %}
+    <ul class="alert alert-danger">
+      {% for field, errors in form.errors.items %} {% for error in errors %}
+      <li><strong>{{ field }}:</strong> {{ error }}</li>
+      {% endfor %} {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+
+  <div
+    class="note-form p-4 bg-light shadow-lg rounded"
+    style="max-width: 600px; margin: 0 auto"
+  >
+    <form method="post" enctype="multipart/form-data" class="form">
+      {% csrf_token %}
+      <div class="form-group mb-3">
+        <label for="id_title" class="form-label fw-bold">Title</label>
+        <input
+          type="text"
+          name="title"
+          id="id_title"
+          class="form-control border border-primary shadow-sm"
+          value="{{ form.title.value|default_if_none:'' }}"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label for="id_content" class="form-label fw-bold">Content</label>
+        <textarea
+          name="content"
+          id="id_content"
+          class="form-control border border-success shadow-sm"
+        >
+{{ form.content.value|default_if_none:'' }}</textarea
+        >
+      </div>
+      <div class="form-group mb-3">
+        <label for="id_screen_shoot" class="form-label fw-bold"
+          >Screenshot</label
+        >
+        <input
+          type="file"
+          name="screen_shoot"
+          id="id_screen_shoot"
+          class="form-control border border-info shadow-sm"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary mb-3 rounded-pill shadow">
+        Embed Note
+      </button>
+    </form>
+  </div>
+</div>
 {% endblock %}

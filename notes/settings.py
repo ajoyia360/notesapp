@@ -25,8 +25,12 @@ SECRET_KEY = 'django-insecure-zg&c=%w&zv7&n8mr2w+b)a1q&_r#&mh0+@#j^sryb8x_7&1$w%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.AllowAllUsersModelBackend',
+    'mainapp.backends.CaseInsensitiveModelBackend',  # Adjust this path if necessary
+)
 
 # Application definition
 

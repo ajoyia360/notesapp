@@ -18,9 +18,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path,include
+from mainapp.views import read_notes
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', login_required(read_notes), name='read_notes'),
     path('',include('mainapp.urls')),
     path('',include('user_system.urls')),
 ]
