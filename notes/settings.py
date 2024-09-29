@@ -152,9 +152,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'media'),
+    os.path.join(BASE_DIR, 'static'),  # Adjust this if needed
+    '/home/aj8329759/.local/user/aj8329759/files/home/aj8329759/.local/notesapp/media',
 ]
+
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
