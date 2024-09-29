@@ -3,12 +3,34 @@ from mainapp.forms import NoteForm
 from django.shortcuts import render,redirect
 from django.contrib import messages
 # Create your views here.
-from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import NoteForm  # Import your NoteForm
 from .models import NoteModel
 
+from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.decorators import login_required
 
+
+def dashboard_callback(request, context):
+    context.update({
+        "custom_variable": "value",  # Add any other variables you want to pass
+    })
+    return context
+
+
+class CustomAdminSite(admin.AdminSite):
+    site_header = "My Custom Admin"
+    site_title = "Admin"
+    index_title = "Dashboard"
+
+    def index(self, request, extra_context=None):
+        context = super().index(request, extra_context)
+        context = dashboard_callback(request, context)
+        return context
+
+
+admin_site = CustomAdminSite(name='custom_admin')
 def create_note(request):
     if request.method == 'POST':
         form = NoteForm(request.POST, request.FILES)  # Need to include request.FILES for file uploads
@@ -26,7 +48,7 @@ def create_note(request):
 
 #read all the notes
 
-
+@login_required(login_url='login/')  # Redirects to custom login if not authenticated
 def read_notes(request):
     notes=NoteModel.objects.all()
     context = {'notes':notes}

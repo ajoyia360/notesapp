@@ -1,0 +1,79 @@
+/* static/css/custom_unfold_admin.css */
+
+/* Style for the form wrapper */
+.formWrapper {
+  background-color: #ffffff; /* Background color */
+  border: 1px solid #e3e3e3; /* Border color */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  padding: 20px; /* Inner padding */
+  margin-bottom: 30px; /* Margin below the form */
+}
+
+/* Styling the form labels */
+.formWrapper label {
+  font-weight: bold; /* Bold labels */
+  margin-bottom: 5px; /* Space below labels */
+  color: #333; /* Label color */
+}
+
+/* Style for input fields */
+.formWrapper input,
+.formWrapper textarea {
+  border: 1px solid #dcdcdc; /* Light border */
+  padding: 10px; /* Padding inside fields */
+  border-radius: 5px; /* Rounded corners */
+  width: 100%; /* Full width */
+  box-sizing: border-box; /* Include padding in width */
+  transition: border 0.3s; /* Smooth border transition */
+}
+
+/* Change border color on focus */
+.formWrapper input:focus,
+.formWrapper textarea:focus {
+  border-color: #007bff; /* Focus border color */
+  outline: none; /* Remove default outline */
+}
+
+/* Style for file input */
+.formWrapper input[type="file"] {
+  border: 1px solid #dcdcdc; /* Light border */
+  padding: 10px; /* Padding inside field */
+  border-radius: 5px; /* Rounded corners */
+  width: 100%; /* Full width */
+}
+
+/* Style for buttons */
+.formWrapper button {
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  padding: 10px 15px; /* Button padding */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+  transition: background 0.3s; /* Smooth background transition */
+}
+
+/* Change button background on hover */
+.formWrapper button:hover {
+  background-color: #0056b3; /* Darker background on hover */
+}
+
+/* Additional styling for messages and notifications */
+.messages {
+  margin-bottom: 20px; /* Space below messages */
+}
+
+.messages .success {
+  background-color: #d4edda; /* Success message background */
+  color: #155724; /* Success message text color */
+  padding: 10px; /* Padding for messages */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.messages .error {
+  background-color: #f8d7da; /* Error message background */
+  color: #721c24; /* Error message text color */
+  padding: 10px; /* Padding for messages */
+  border-radius: 5px; /* Rounded corners */
+}

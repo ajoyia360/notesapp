@@ -1,0 +1,17 @@
+/* static/css/custom_styles.css */
+input {
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #3b82f6; /* Tailwind blue-600 */
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* Tailwind blue-200 */
+}
+
+button {
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #2563eb; /* Tailwind blue-700 */
+}

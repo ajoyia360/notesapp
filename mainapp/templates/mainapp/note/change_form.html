@@ -1,0 +1,10 @@
+<!-- templates/admin/mainapp/note/change_form.html -->
+{% extends "admin/change_form.html" %} {% block content %}
+<div class="formWrapper">
+  <h2>{{ title }}</h2>
+  <form method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %} {{ adminform.form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+</div>
+{% endblock %}

@@ -9,11 +9,26 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-import os.path
+import os
 from pathlib import Path
+from dotenv import load_dotenv  # Move this import to the top
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Load environment variables
+load_dotenv()
+
+# Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Cloudinary configuration
+cloudinary.config(
+    cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
+    api_key=os.getenv('CLOUDINARY_API_KEY'),
+    api_secret=os.getenv('CLOUDINARY_API_SECRET')
+)
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -21,6 +36,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-zg&c=%w&zv7&n8mr2w+b)a1q&_r#&mh0+@#j^sryb8x_7&1$w%'
+cloudinary.config(
+    cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),  # Use .env variables
+    api_key=os.getenv('CLOUDINARY_API_KEY'),
+    api_secret=os.getenv('CLOUDINARY_API_SECRET')
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -35,6 +55,7 @@ AUTHENTICATION_BACKENDS = (
 # Application definition
 
 INSTALLED_APPS = [
+    'unfold',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,7 +65,12 @@ INSTALLED_APPS = [
     'mainapp',
     'user_system',
     'django_extensions',
+    'cloudinary',
 
+]
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Default static directory
+    BASE_DIR / "themes",   # Add your themes directory
 ]
 
 MIDDLEWARE = [
@@ -142,6 +168,7 @@ BASE_URL = "http://127.0.0.1:8000"
 # settings.py
 
 # settings.py
+LOGIN_URL = 'login/'  # Ensure this matches your URL
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

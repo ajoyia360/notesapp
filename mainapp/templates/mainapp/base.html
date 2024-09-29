@@ -1,32 +1,45 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        height: 100%;
+        margin-bottom: 100%;
+        padding: 0;
+      }
+    </style>
 
-    <meta charset="UTF-8">
-      <style>
-         body {
-            height: 100%;
-            margin-bottom: 100%;
-            padding: 0;
-        }
-        </style>
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/read_note.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/create_note.css' %}">
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom_styles.css' %}" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'bootstrap/css/read_note.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'bootstrap/css/create_note.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css' %}"
+    />
     <title href="{% url 'read_notes' %}">NotesPrograming</title>
-</head>
-<body>
-<div>
-    {% include 'mainapp/navbar.html' %}
-</div>
-<div>
-    {% block content %}
-
-    {% endblock%}
-<script src="{% static 'bootstrap/js/bootstrap.min.js.bundle' %}"></script>
-<script src="{% static 'bootstrap/js/change.js' %}"></script>
-</div>
-{% include 'mainapp/footer.html' %}
-</body>
+  </head>
+  <body>
+    <div>{% include 'mainapp/navbar.html' %}</div>
+    <div>
+      {% block content %} {% endblock%}
+      <script src="{% static 'bootstrap/js/bootstrap.min.js.bundle' %}"></script>
+      <script src="{% static 'bootstrap/js/change.js' %}"></script>
+    </div>
+    {% include 'mainapp/footer.html' %}
+  </body>
 </html>

@@ -1,5 +1,6 @@
 # Python-related files
 test/
+media_cdn/
 *.pyc
 __pycache__/
 *.pyo

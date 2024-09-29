@@ -1,0 +1,14 @@
+<!-- templates/admin/base_site.html -->
+{% extends "admin/base_site.html" %} {% block extrahead %} {{ block.super }}
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+/>
+<!-- Ensure Tailwind is included -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/custom_admin.css' %}"
+/>
+<!-- Your custom styles -->
+{% endblock %}
