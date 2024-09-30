@@ -43,9 +43,9 @@ cloudinary.config(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['aj8329759.pythonanywhere.com'] 
+ALLOWED_HOSTS = [] 
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.AllowAllUsersModelBackend',
@@ -153,7 +153,6 @@ USE_TZ = True
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # Adjust this if needed
-    '/home/aj8329759/.local/user/aj8329759/files/home/aj8329759/.local/notesapp/media',
 ]
 
 STATIC_URL = '/static/'
